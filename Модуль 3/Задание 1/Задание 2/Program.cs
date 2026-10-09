@@ -24,6 +24,7 @@ class Program
 {
     static void Main()
     {
+
         Notification app = new Notification();
 
         // Подписываемся на методы 
@@ -33,8 +34,8 @@ class Program
         app.OnCall += contact => Console.WriteLine($"[Звонок] Звонит: {contact}");
         app.OnEmail += subject => Console.WriteLine($"[Email] Тема: {subject}");
 
-        app.SendMessage("Привет!"); 
-        app.SendCall("Мама");       
-        app.SendEmail("Отчет");     
+        app.SendMessage("Привет!");
+        app.SendCall("Мама");
+        app.SendEmail("Отчет");
     }
 }
