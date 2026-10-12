@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="../Задание 2/Задание 2.csproj" />
+  <Project Path="../Задание 3/Задание 3.csproj" />
+  <Project Path="../Задание 4/Задание 4.csproj" Id="90ca668b-4d8a-4413-85ef-3274bd3d2996" />
+  <Project Path="../Задание 5/Задание 5.csproj" Id="e8a045ed-6a8a-447b-b988-1552ece4d4c7" />
+  <Project Path="Задание 1/Задание 1.csproj" />
+</Solution>
