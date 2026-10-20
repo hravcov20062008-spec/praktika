@@ -1,0 +1,124 @@
+﻿<Window x:Class="Задание_4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Учёт финансов"
+        Height="650" Width="1000"
+        MinHeight="550" MinWidth="850"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="УЧЁТ ФИНАНСОВ"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,15"/>
+
+        <Grid Grid.Row="1" Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0" Margin="5">
+                <TextBlock Text="Тип операции"/>
+                <ComboBox x:Name="cmbType" Height="28" Margin="0,4"
+                          SelectedIndex="0">
+                    <ComboBoxItem Content="Доход"/>
+                    <ComboBoxItem Content="Расход"/>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="5">
+                <TextBlock Text="Категория"/>
+                <TextBox x:Name="txtCategory" Height="28" Margin="0,4"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="2" Margin="5">
+                <TextBlock Text="Сумма"/>
+                <TextBox x:Name="txtAmount" Height="28" Margin="0,4"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="3" Margin="5">
+                <TextBlock Text="Дата"/>
+                <DatePicker x:Name="dpDate" Height="28" Margin="0,4"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="0"
+                        Grid.ColumnSpan="3" Margin="5">
+                <TextBlock Text="Описание"/>
+                <TextBox x:Name="txtDescription"
+                         Height="28" Margin="0,4"/>
+            </StackPanel>
+
+            <Button Grid.Row="1" Grid.Column="3"
+                    Content="Очистить"
+                    Height="30" Margin="5,20,5,4"
+                    Click="btnClear_Click"/>
+        </Grid>
+
+        <DataGrid x:Name="dgvFinance"
+                  Grid.Row="2"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  SelectionChanged="dgvFinance_SelectionChanged"
+                  CanUserAddRows="False"
+                  Margin="0,0,0,12">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID"
+                                    Binding="{Binding Id}"
+                                    Width="50"/>
+                <DataGridTextColumn Header="Тип"
+                                    Binding="{Binding Type}"
+                                    Width="85"/>
+                <DataGridTextColumn Header="Категория"
+                                    Binding="{Binding Category}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Сумма"
+                                    Binding="{Binding Amount}"
+                                    Width="100"/>
+                <DataGridTextColumn Header="Дата"
+                                    Binding="{Binding Date}"
+                                    Width="110"/>
+                <DataGridTextColumn Header="Описание"
+                                    Binding="{Binding Description}"
+                                    Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="3">
+            <TextBlock x:Name="lblSummary"
+                       Text="Доходы: 0 | Расходы: 0 | Баланс: 0"
+                       FontSize="16"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,10"/>
+
+            <WrapPanel HorizontalAlignment="Center">
+                <Button Content="Добавить"
+                        Width="110" Height="35" Margin="4"
+                        Click="btnAdd_Click"/>
+                <Button Content="Изменить"
+                        Width="110" Height="35" Margin="4"
+                        Click="btnEdit_Click"/>
+                <Button Content="Удалить"
+                        Width="110" Height="35" Margin="4"
+                        Click="btnDelete_Click"/>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>

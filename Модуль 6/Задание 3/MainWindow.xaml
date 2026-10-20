@@ -1,0 +1,136 @@
+﻿<Window x:Class="Задание_3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Учёт книг в библиотеке"
+        Height="650" Width="1000"
+        MinHeight="550" MinWidth="850"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="УЧЁТ КНИГ В БИБЛИОТЕКЕ"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,15"/>
+
+        <Grid Grid.Row="1" Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="120"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0" Margin="5">
+                <TextBlock Text="Название книги"/>
+                <TextBox x:Name="txtTitle"
+                         Height="28" Margin="0,4"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="5">
+                <TextBlock Text="Автор"/>
+                <TextBox x:Name="txtAuthor"
+                         Height="28" Margin="0,4"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="2" Margin="5">
+                <TextBlock Text="Год издания"/>
+                <TextBox x:Name="txtYear"
+                         Height="28" Margin="0,4"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Margin="5">
+                <TextBlock Text="Количество экземпляров"/>
+                <TextBox x:Name="txtCopies"
+                         Height="28" Margin="0,4"
+                         Text="1"/>
+            </StackPanel>
+
+            <Button Grid.Row="1" Grid.Column="2"
+                    Content="Очистить"
+                    Height="30"
+                    Margin="5,20,5,4"
+                    Click="btnClear_Click"/>
+        </Grid>
+
+        <DataGrid x:Name="dgvBooks"
+                  Grid.Row="2"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  SelectionChanged="dgvBooks_SelectionChanged"
+                  CanUserAddRows="False"
+                  Margin="0,0,0,12">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID"
+                                    Binding="{Binding Id}"
+                                    Width="50"/>
+
+                <DataGridTextColumn Header="Название"
+                                    Binding="{Binding Title}"
+                                    Width="*"/>
+
+                <DataGridTextColumn Header="Автор"
+                                    Binding="{Binding Author}"
+                                    Width="*"/>
+
+                <DataGridTextColumn Header="Год"
+                                    Binding="{Binding Year}"
+                                    Width="80"/>
+
+                <DataGridTextColumn Header="Экземпляры"
+                                    Binding="{Binding TotalCopies}"
+                                    Width="100"/>
+
+                <DataGridTextColumn Header="Выдано"
+                                    Binding="{Binding RentedCopies}"
+                                    Width="80"/>
+
+                <DataGridTextColumn Header="Доступно"
+                                    Binding="{Binding AvailableCopies}"
+                                    Width="90"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <WrapPanel Grid.Row="3"
+                   HorizontalAlignment="Center">
+
+            <Button Content="Добавить"
+                    Width="110" Height="35"
+                    Margin="4"
+                    Click="btnAdd_Click"/>
+
+            <Button Content="Изменить"
+                    Width="110" Height="35"
+                    Margin="4"
+                    Click="btnEdit_Click"/>
+
+            <Button Content="Удалить"
+                    Width="110" Height="35"
+                    Margin="4"
+                    Click="btnDelete_Click"/>
+
+            <Button Content="Выдать книгу"
+                    Width="120" Height="35"
+                    Margin="4"
+                    Click="btnRent_Click"/>
+
+            <Button Content="Вернуть книгу"
+                    Width="120" Height="35"
+                    Margin="4"
+                    Click="btnReturn_Click"/>
+        </WrapPanel>
+    </Grid>
+</Window>

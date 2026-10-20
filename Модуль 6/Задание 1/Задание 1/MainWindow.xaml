@@ -1,0 +1,123 @@
+﻿<Window x:Class="Задание_1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Задание_1"
+        mc:Ignorable="d"
+        Title="Учёт сотрудников организации"
+        Height="550" Width="900"
+        MinHeight="450" MinWidth="700"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Text="УЧЁТ СОТРУДНИКОВ"
+                   FontSize="26"
+                   FontWeight="Bold"
+                   Foreground="#245A81"
+                   Margin="0,0,0,15"/>
+
+        <!-- Поля ввода -->
+        <Border Grid.Row="1"
+                BorderBrush="#CCCCCC"
+                BorderThickness="1"
+                CornerRadius="6"
+                Padding="12"
+                Margin="0,0,0,12">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="5">
+                    <TextBlock Text="ФИО сотрудника"/>
+                    <TextBox x:Name="txtFullName"
+                             Height="32"
+                             Margin="0,5,0,0"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="5">
+                    <TextBlock Text="Должность"/>
+                    <TextBox x:Name="txtPosition"
+                             Height="32"
+                             Margin="0,5,0,0"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0"
+                            Grid.Column="2"
+                            Margin="5">
+                    <TextBlock Text="Зарплата"/>
+                    <TextBox x:Name="txtSalary"
+                             Height="32"
+                             Margin="0,5,0,0"/>
+                </StackPanel>
+
+                <!-- Кнопки -->
+                <WrapPanel Grid.Row="1"
+                           Grid.ColumnSpan="3"
+                           Margin="5,15,5,0">
+
+                    <Button Content="Добавить"
+                            Width="115"
+                            Height="35"
+                            Margin="0,0,10,0"
+                            Click="btnAdd_Click"/>
+
+                    <Button Content="Изменить"
+                            Width="115"
+                            Height="35"
+                            Margin="0,0,10,0"
+                            Click="btnEdit_Click"/>
+
+                    <Button Content="Удалить"
+                            Width="115"
+                            Height="35"
+                            Margin="0,0,10,0"
+                            Click="btnDelete_Click"/>
+
+                    <Button Content="Очистить поля"
+                            Width="125"
+                            Height="35"
+                            Click="btnClear_Click"/>
+                </WrapPanel>
+            </Grid>
+        </Border>
+
+        <!-- Таблица сотрудников -->
+        <DataGrid x:Name="dgvEmployees"
+                  Grid.Row="2"
+                  AutoGenerateColumns="True"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  SelectionMode="Single"
+                  SelectionChanged="dgvEmployees_SelectionChanged"
+                  Margin="0,0,0,10"/>
+
+        <!-- Строка состояния -->
+        <TextBlock x:Name="lblStatus"
+                   Grid.Row="3"
+                   Text="Количество сотрудников: 0"
+                   Foreground="Gray"
+                   FontSize="13"/>
+    </Grid>
+</Window>
