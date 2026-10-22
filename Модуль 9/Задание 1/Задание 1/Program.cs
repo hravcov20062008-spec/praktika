@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Text.Encodings.Web; // ДОБАВЛЕНО для корректного отображения кириллицы
+using System.Text.Encodings.Web; 
 
 // Класс, описывающий студента
 class Student
@@ -28,7 +28,7 @@ class Program
 {
     static List<Student> students = new List<Student>();
 
-    // ИСПРАВЛЕНО: Возвращено правильное расширение .json
+    // Возвращено правильное расширение txt.
     static string filePath = "students.txt";
 
     static void Main()
